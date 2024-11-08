@@ -50,7 +50,7 @@ function Header() {
         <div className="flex items-center space-x-4 mt-4 sm:mt-0 flex-1 sm:flex-none">
           <Link
             href="/basket"
-            className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+            className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             <TrolleyIcon className="w-67 h-6" />
             {/* Span item count ocne the glabel state is implemented */}
@@ -62,7 +62,7 @@ function Header() {
             <SignedIn>
               <Link
                 href="/orders"
-                className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 roounded"
+                className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 <Package className="w-6 h-6" />
                 <span>My Order</span>
