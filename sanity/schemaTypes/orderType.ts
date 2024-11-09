@@ -79,7 +79,7 @@ export const orderType = defineType({
             prepare(select) {
               return {
                 title: `${select.product} x ${select.quantity}`,
-                subtitle: `$${select.price * select.quantity}`,
+                subtitle: `${select.price * select.quantity}`,
                 media: select.image,
               };
             },
@@ -107,7 +107,7 @@ export const orderType = defineType({
     }),
     defineField({
       name: 'status',
-      title: 'Status',
+      title: 'Order Status',
       type: 'string',
       options: {
         list: [
@@ -140,7 +140,7 @@ export const orderType = defineType({
       const orderIdSnippet = `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}`;
       return {
         title: `${select.name} (${orderIdSnippet})`,
-        subtitle: `${select.name} ${select.currency}, ${select.email}`,
+        subtitle: `${select.amount} ${select.currency}, ${select.email}`,
         media: BasketIcon,
       };
     },

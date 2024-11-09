@@ -6,11 +6,8 @@ export const structure: StructureResolver = (S) =>
     .title('ShopM E-Commerce')
     .items([
       S.documentTypeListItem('category').title('Categories'),
-      S.documentTypeListItem('author').title('Authors'),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) =>
-          item.getId() &&
-          !['post', 'category', 'author'].includes(item.getId()!)
+        (item) => item.getId() && !['category'].includes(item.getId()!)
       ),
     ]);

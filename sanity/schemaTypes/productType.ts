@@ -41,8 +41,8 @@ export const productType = defineType({
       validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
+      name: 'categories',
+      title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
     }),
@@ -57,12 +57,12 @@ export const productType = defineType({
     select: {
       title: 'name',
       media: 'image',
-      subtitle: 'description',
+      subtitle: 'price',
     },
     prepare(select) {
       return {
         title: select.title,
-        subtitle: `$${select.subtitle}`,
+        subtitle: `$ ${select.subtitle}`,
         media: select.media,
       };
     },
