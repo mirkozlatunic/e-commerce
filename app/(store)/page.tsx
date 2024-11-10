@@ -1,8 +1,11 @@
+import ProductView from '@/components/ProductView';
 import { Button } from '@/components/ui/button';
+import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 
 export default async function Home() {
-  const products = await getAllProducts;
+  const products = await getAllProducts();
+  const categories = await getAllCategories();
 
   // console.log(
   //   crypto.randomUUID().slice(0, 5) +
@@ -12,7 +15,10 @@ export default async function Home() {
   return (
     <div>
       <h1>Hello world 1234</h1>
-      <Button>Click Me</Button>
+
+      <div className="flex flex-col items-center justify-top min-h-screen bg-gray-100 p-4">
+        <ProductView products={products} categories={categories} />
+      </div>
     </div>
   );
 }
