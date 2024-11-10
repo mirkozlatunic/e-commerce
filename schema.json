@@ -989,7 +989,7 @@
         },
         "optional": true
       },
-      "category": {
+      "categories": {
         "type": "objectAttribute",
         "value": {
           "type": "array",
