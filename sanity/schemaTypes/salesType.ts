@@ -2,13 +2,13 @@ import { TagIcon } from 'lucide-react';
 import { defineField, defineType } from 'sanity';
 
 export const salesType = defineType({
-  name: 'sales',
-  title: 'Sales',
+  name: 'sale',
+  title: 'Sale',
   type: 'document',
   icon: TagIcon,
   fields: [
     defineField({
-      name: 'Title',
+      name: 'title',
       type: 'string',
       title: 'Sale Title',
     }),
