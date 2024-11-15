@@ -282,8 +282,17 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/products/getAllCategories.ts
 // Variable: ALL_CATEGORIES_QUERY
-// Query: *[        _type == "categories"      ] | order(name asc)
-export type ALL_CATEGORIES_QUERYResult = Array<never>;
+// Query: *[        _type == "category"      ] | order(name asc)
+export type ALL_CATEGORIES_QUERYResult = Array<{
+  _id: string;
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+}>;
 
 // Source: ./sanity/lib/products/getAllProducts.ts
 // Variable: ALL_PRODUCTS_QUERY
@@ -496,7 +505,7 @@ export type ACTIVE_SALE_BY_COUPON_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n    *[\n        _type == \"categories\"\n      ] | order(name asc)\n    ": ALL_CATEGORIES_QUERYResult;
+    "\n    *[\n        _type == \"category\"\n      ] | order(name asc)\n    ": ALL_CATEGORIES_QUERYResult;
     "\n    *[\n        _type == \"product\"\n      ] | order(name asc)\n    ": ALL_PRODUCTS_QUERYResult;
     "\n  *[_type == \"product\" && slug.current == $slug] | order(name asc)[0]\n    ": PRODUCT_BY_ID_QUERYResult;
     "\n    *[\n        _type == \"product\"\n        && name match $searchParam\n        ] | order(name asc)\n  ": PRODUCT_SEARCH_QUERYResult;
