@@ -1,9 +1,13 @@
 'use client';
 
+import AddToBasketButton from '@/components/AddToBasketButton';
+import Loader from '@/components/Loader';
+import { imageUrl } from '@/lib/imageUrl';
 import useBasketStore from '@/store/store';
 import { useAuth, useUser } from '@clerk/nextjs';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function BasketPage() {
   const groupedItems = useBasketStore((state) => state.getGroupItems());
@@ -13,6 +17,14 @@ function BasketPage() {
 
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return <Loader />;
+  }
 
   if (groupedItems.length === 0) {
     return (
@@ -27,7 +39,39 @@ function BasketPage() {
     <div className="container mx-auto p-4 max-w-6xl">
       <h1 className="text-2xl font-bold mb-4">Your Basket</h1>
       <div className="flex flex-col lg:flex-row gap-8">
-        <div className="flex-grow"></div>
+        <div className="flex-grow">
+          {groupedItems?.map((item) => (
+            <div
+              key={item.product._id}
+              className="mb-4 p-4 border rounded flex items-center justify-between"
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 mr-4">
+                {item.product.name && (
+                  <Image
+                    src={imageUrl(item.product.image).url()}
+                    alt={item.product.name ?? 'Product Name'}
+                    className="w-full h-full object-cover rounded"
+                    width={96}
+                    height={96}
+                  />
+                )}
+              </div>
+              <div className="min-w-0">
+                <h2 className="text-lg sm:text-xl font-semibold trincate">
+                  {item.product.name}
+                </h2>
+                <p className="text-sm sm:text-base">
+                  Price: $
+                  {((item.product.price ?? 0) * item.quantity).toFixed(2)}
+                </p>
+              </div>
+
+              <div className="flex items-center ml-4 flex-shrink-0">
+                <AddToBasketButton product={item.product} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
