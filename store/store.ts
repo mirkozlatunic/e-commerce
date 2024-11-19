@@ -12,6 +12,7 @@ interface BasketState {
   addItem: (product: Product) => void;
   removeItem: (productId: string) => void;
   clearBasket: () => void;
+  getTotalPrice(): number;
   getItemCount: (productId: string) => number;
   getGroupItems: () => BasketItem[];
 }

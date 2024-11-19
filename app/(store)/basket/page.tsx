@@ -40,9 +40,8 @@ function BasketPage() {
   }
 
   const handleCheckout = async () => {
-    if (!isSignedIn) {
-      setIsLoading(true);
-    }
+    if (!isSignedIn) return;
+    setIsLoading(true);
 
     try {
       const metadata: Metadata = {
@@ -81,7 +80,7 @@ function BasketPage() {
                 }
               >
                 <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 mr-4">
-                  {item.product.name && (
+                  {item.product.image && (
                     <Image
                       src={imageUrl(item.product.image).url()}
                       alt={item.product.name ?? 'Product Name'}
