@@ -8,7 +8,7 @@ export const orderType = defineType({
   icon: BasketIcon,
   fields: [
     defineField({
-      name: 'OrderNumber',
+      name: 'orderNumber',
       title: 'Order Number',
       type: 'string',
       validation: (Rule) => Rule.required(),
