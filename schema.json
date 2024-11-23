@@ -446,7 +446,7 @@
           "type": "string"
         }
       },
-      "OrderNumber": {
+      "orderNumber": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
