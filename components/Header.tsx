@@ -12,6 +12,7 @@ import Form from 'next/form';
 import { TrolleyIcon } from '@sanity/icons';
 import { Package } from 'lucide-react';
 import useBasketStore from '@/store/store';
+import Logo from './Logo';
 
 function Header() {
   const { user } = useUser();
@@ -34,9 +35,9 @@ function Header() {
       <div className="flex w-full flex-wrap justify-between items-center">
         <Link
           href="/"
-          className="text-2xl font-bold text-blue-500 hover:opacity-50 cursor-pointer mx-auto sm:mx-0"
+          className="text-blue-500 hover:opacity-50 cursor-pointer mx-auto sm:mx-0"
         >
-          ShopM
+          <Logo />
         </Link>
 
         <Form

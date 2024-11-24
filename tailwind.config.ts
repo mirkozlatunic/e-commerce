@@ -56,6 +56,24 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      keyframes: {
+        snowfall: {
+          '0%': {
+            transform: 'translateY(-10px)',
+            opacity: '0',
+          },
+          '50%': {
+            opacity: '0.6',
+          },
+          '100%': {
+            transform: 'translateY(100px)',
+            opacity: '0',
+          },
+        },
+      },
+      animation: {
+        snowfall: 'snowfall 3s linear infinite',
+      },
     },
   },
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
